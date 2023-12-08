@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimAction Quiz</title>
+    <!-- Include Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Initialize Tailwind with Dark Mode -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      };
+    </script>
+</head>
+<body class="font-sans bg-gray-100 dark:bg-gray-800 flex justify-center items-center min-h-screen transition duration-500 ease-in-out">
+    
+<!-- Fixed container for notification -->
+<div id="alert-container" class="fixed top-0 left-0 right-0 flex justify-center inset-x-0 p-4 z-10">
+    <!-- Notification hidden by default -->
+    <div id="notification-container" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <span id="notification-message" class="block sm:inline mr-16">Your message here.</span> <!-- Increased margin with mr-16 -->
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+            <svg id="notification-close" class="fill-current h-6 w-6 text-red-500 cursor-pointer" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <title>Close</title>
+                <path d="M14.348 14.849a.5.5 0 0 1-.708 0L10 11.207l-3.65 3.65a.5.5 0 0 1-.708-.708l3.65-3.65-3.65-3.65a.5.5 0 1 1 .708-.708L10 9.793l3.65-3.65a.5.5 0 0 1 .708.708l-3.65 3.65 3.65 3.65a.5.5 0 0 1 0 .708z"/>
+            </svg>
+        </span>
+    </div>
+</div>
+    
+    <div class="quiz-container bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg shadow-md p-5 w-full max-w-md" id="quiz">
+        <div id="quiz-content">
+            <!-- Le contenu du quiz sera généré par script.js -->
+        </div>
+        <button id="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 rounded focus:outline-none w-full mt-5">Soumettre Réponse</button>
+        <button id="next" class="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded focus:outline-none w-full mt-5" style="display:none;">Question Suivante</button>
+        <!-- Toggle button for dark mode -->
+        <div class="flex justify-center w-full">
+            <button id="dark-mode-toggle" class="mt-5 py-2 px-4 bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded cursor-pointer transition-all duration-300">
+                Dark Mode
+            </button>
+        </div>
+    </div>
+
+    <!-- Script pour gérer les questions et la logique du quiz -->
+    <script src="script.js"></script>
+    <script>
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+        darkModeToggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>
